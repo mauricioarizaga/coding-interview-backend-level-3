@@ -8,5 +8,17 @@ ARG USERNAME=node
 RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Set `DEVCONTAINER` environment variable to help with orientation
+# Set `DEVCONTAINER` environment variable to help with orientationz
 ENV DEVCONTAINER=true
+
+WORKDIR /src
+
+RUN npm install i npm
+
+COPY package.json package-lock*.json ./
+
+RUN npm install
+
+COPY . .
+
+CMD ["node", "index.ts"]
