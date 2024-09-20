@@ -1,5 +1,5 @@
 import Hapi from "@hapi/hapi";
-import { routes } from "./routes/index";
+const routes = require("./routes/");
 
 const getServer = () => {
 	const server = Hapi.server({
