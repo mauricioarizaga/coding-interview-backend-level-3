@@ -1,3 +1,5 @@
-import { init, start } from "./server";
+import { initServer, start } from "./server";
 
-init().then(() => start());
+initServer().then(async () => {
+	await start();
+});

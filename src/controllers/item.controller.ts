@@ -1,8 +1,14 @@
-export const createItemHandler = async (request, h) => {
+import { Request } from "@hapi/hapi";
+import { createItemService } from "../services";
+
+export const createItemHandler = async (request: Request, h) => {
 	try {
-		const { body } = request;
-		await createItemService(body);
+		const body = request.payload;
+
+		//	console.log(request.payload);
+		console.log(body);
+		return await createItemService(body);
 	} catch (error) {
-		new Error(error);
+		throw new Error(error);
 	}
 };

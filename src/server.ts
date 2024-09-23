@@ -1,21 +1,32 @@
 import Hapi from "@hapi/hapi";
 import { Server } from "@hapi/hapi";
-const routes = require("./routes/");
+import { routes } from "./routes/";
+import { initDb } from "./config/db";
 
 export let server: Server;
 
-export const init = async function (): Promise<Server> {
-	server = Hapi.server({
-		port: process.env.PORT || 4000,
-		host: "0.0.0.0"
-	});
+export const initServer = async () => {
+	try {
+		server = Hapi.server({
+			port: process.env.PORT || 4000,
+			host: "localhost"
+		});
+		server.route(routes as []);
+		await initDb();
 
-	// Routes will go here
+		return server;
+	} catch (error) {
+		console.log(error);
+	}
+};
 
+export const initializeServer = async () => {
+	const server = await initServer();
+	await server.initialize();
 	return server;
 };
 
-export const start = async function (): Promise<void> {
+export const start = async () => {
 	console.log(`Listening on ${server.settings.host}:${server.settings.port}`);
 	return server.start();
 };

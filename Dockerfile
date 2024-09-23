@@ -21,4 +21,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "index.ts"]
+CMD npm start

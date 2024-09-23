@@ -1,5 +1,5 @@
 import { createItemHandler } from "../controllers/index";
-const apiPrefixPath = `/v1/item`;
+const apiPrefixPath = `/item`;
 export const createItem = {
 	method: "POST",
 	path: `${apiPrefixPath}`,
@@ -8,10 +8,10 @@ export const createItem = {
 	}
 };
 
-export const getItmes = {
+/* export const getItmes = {
 	method: "POST",
 	path: `${apiPrefixPath}`,
 	options: {
 		handler: getItemsHandler
 	}
-};
+}; */
