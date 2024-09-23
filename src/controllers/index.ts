@@ -1,1 +1,5 @@
-export { createItemHandler, getAllItemsHandler } from "./item.controller";
+export {
+	createItemHandler,
+	getAllItemsHandler,
+	getItemByIdHandler
+} from "./item.controller";

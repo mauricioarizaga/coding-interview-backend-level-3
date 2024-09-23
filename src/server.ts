@@ -2,22 +2,19 @@ import Hapi from "@hapi/hapi";
 import { Server } from "@hapi/hapi";
 import { routes } from "./routes/";
 import { initDb } from "./config/db";
+import { Item } from "./entities";
 
 export let server: Server;
 
 export const initServer = async () => {
-	try {
-		server = Hapi.server({
-			port: process.env.PORT || 4000,
-			host: "localhost"
-		});
-		server.route(routes as []);
-		await initDb();
+	server = Hapi.server({
+		port: process.env.PORT || 4000,
+		host: "localhost"
+	});
+	server.route(routes as []);
+	await initDb();
 
-		return server;
-	} catch (error) {
-		console.log(error);
-	}
+	return server;
 };
 
 export const initializeServer = async () => {

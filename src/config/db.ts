@@ -7,7 +7,7 @@ const sequelize = new Sequelize({
 	storage: "src/sqlite.db"
 });
 export const initDb = async () => {
-	await Item.sync({ alter: true });
+	await Item.sync({ alter: true, logging: false });
 
 	await sequelize.authenticate();
 };

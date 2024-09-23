@@ -1,8 +1,16 @@
-import { createItemRepository, getAllItemsRepository } from "../repositories";
+import {
+	createItemRepository,
+	getAllItemsRepository,
+	getItemByIdRepository
+} from "../repositories";
+import { responseSaveDto } from "./dto/createDto";
+import { responseGetAllDto, responseGetByIdDto } from "./dto/getMapper";
 
 export const createItemService = async (body) => {
 	try {
-		return await createItemRepository(body);
+		const item = await createItemRepository(body);
+		const responseSave = responseSaveDto(item);
+		return responseSave;
 	} catch (error) {
 		throw new Error(error);
 	}
@@ -10,10 +18,17 @@ export const createItemService = async (body) => {
 export const getAllItemsService = async () => {
 	try {
 		const items = await getAllItemsRepository();
-		if (items.length === 0) {
-			return { items, message: "Items not Found" };
-		}
-		return { items };
+		const responseGetAll = responseGetAllDto(items);
+		return responseGetAll;
+	} catch (error) {
+		throw new Error(error);
+	}
+};
+export const getItemByIdService = async (id: number) => {
+	try {
+		const item = await getItemByIdRepository(id);
+		const responseMapper = responseGetByIdDto(item);
+		return responseMapper;
 	} catch (error) {
 		throw new Error(error);
 	}

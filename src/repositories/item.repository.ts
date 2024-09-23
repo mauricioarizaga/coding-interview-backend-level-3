@@ -15,3 +15,12 @@ export const getAllItemsRepository = async () => {
 		throw new Error(error);
 	}
 };
+
+export const getItemByIdRepository = async (id: number) => {
+	try {
+		const dataQuery = { where: { id } };
+		return await Item.findOne(dataQuery);
+	} catch (error) {
+		throw new Error(error);
+	}
+};

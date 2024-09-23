@@ -1,31 +1,31 @@
-const Joi = require("joi");
-import { createItemHandler, getAllItemsHandler } from "../controllers/index";
-const apiPrefixPath = `/item`;
+import {
+	createItemHandler,
+	getAllItemsHandler,
+	getItemByIdHandler
+} from "../controllers/index";
+
+const apiPrefixPath = `/items`;
+
 export const createItem = {
 	method: "POST",
 	path: `${apiPrefixPath}`,
 	options: {
-		handler: createItemHandler,
-		validate: {
-			payload: Joi.object().keys({
-				name: Joi.string().alphanum().min(3).max(50).required(),
-				price: Joi.number()
-					.positive()
-					.min(0)
-					.required()
-					.error(() => {
-						return {
-							errorMessage: "price requires a positive number"
-						};
-					})
-			})
-		}
+		handler: createItemHandler
 	}
 };
+
 export const getAllItems = {
 	method: "GET",
 	path: `${apiPrefixPath}`,
 	options: {
 		handler: getAllItemsHandler
+	}
+};
+
+export const getItemById = {
+	method: "GET",
+	path: `${apiPrefixPath}/{id}`,
+	options: {
+		handler: getItemByIdHandler
 	}
 };
