@@ -1,2 +1,2 @@
-import { getPing, testRoute } from "./ping.routes";
-export const routes = [getPing, testRoute];
+import { getPing } from "./ping.routes";
+export const routes = [getPing];

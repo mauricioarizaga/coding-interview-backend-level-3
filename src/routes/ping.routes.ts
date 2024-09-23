@@ -5,10 +5,3 @@ export const getPing = {
 		return { status: "ok" };
 	}
 };
-export const testRoute = {
-	method: "GET",
-	path: "/test",
-	handler: () => {
-		return { status: "Server Up and Running" };
-	}
-};
