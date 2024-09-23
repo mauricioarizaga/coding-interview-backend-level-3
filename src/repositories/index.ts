@@ -1,1 +1,1 @@
-export { createItemRepository } from "./item.repository";
+export { createItemRepository, getAllItemsRepository } from "./item.repository";

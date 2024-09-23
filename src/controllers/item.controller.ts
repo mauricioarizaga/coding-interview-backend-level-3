@@ -1,5 +1,5 @@
 import { Request } from "@hapi/hapi";
-import { createItemService } from "../services";
+import { createItemService, getAllItemsService } from "../services";
 
 export const createItemHandler = async (request: Request, h) => {
 	try {
@@ -11,9 +11,9 @@ export const createItemHandler = async (request: Request, h) => {
 	}
 };
 
-export const getAllItemsHandler = async (request: Request, h) => {
+export const getAllItemsHandler = async () => {
 	try {
-		//	return await createItemService(body);
+		return await getAllItemsService();
 	} catch (error) {
 		throw new Error(error);
 	}

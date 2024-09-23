@@ -1,1 +1,1 @@
-export { createItemService } from "./item.service";
+export { createItemService, getAllItemsService } from "./item.service";

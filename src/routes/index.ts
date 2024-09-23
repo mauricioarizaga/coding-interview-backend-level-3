@@ -1,3 +1,3 @@
-import { createItem } from "./Item.routes";
+import { createItem, getAllItems } from "./Item.routes";
 import { getPing } from "./ping.routes";
-export const routes = [getPing, createItem];
+export const routes = [getPing, createItem, getAllItems];
