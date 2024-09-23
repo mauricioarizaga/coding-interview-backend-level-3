@@ -4,9 +4,10 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize({
 	dialect: "sqlite",
-	storage: "database.sqlite"
+	storage: "src/sqlite.db"
 });
 export const initDb = async () => {
 	await Item.sync({ alter: true });
+
 	await sequelize.authenticate();
 };

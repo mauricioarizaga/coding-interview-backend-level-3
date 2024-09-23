@@ -5,9 +5,15 @@ export const createItemHandler = async (request: Request, h) => {
 	try {
 		const body = request.payload;
 
-		//	console.log(request.payload);
-		console.log(body);
 		return await createItemService(body);
+	} catch (error) {
+		throw new Error(error);
+	}
+};
+
+export const getAllItemsHandler = async (request: Request, h) => {
+	try {
+		//	return await createItemService(body);
 	} catch (error) {
 		throw new Error(error);
 	}
