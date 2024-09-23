@@ -1,25 +1,27 @@
 import Hapi from "@hapi/hapi";
+import { Server } from "@hapi/hapi";
 const routes = require("./routes/");
 
-const getServer = () => {
-	const server = Hapi.server({
-		host: "localhost",
-		port: 8080
+export let server: Server;
+
+export const init = async function (): Promise<Server> {
+	server = Hapi.server({
+		port: process.env.PORT || 4000,
+		host: "0.0.0.0"
 	});
-	server.route(routes);
+
+	// Routes will go here
+
 	return server;
 };
 
-export const initializeServer = async () => {
-	const server = getServer();
-	await server.initialize();
-	return server;
+export const start = async function (): Promise<void> {
+	console.log(`Listening on ${server.settings.host}:${server.settings.port}`);
+	return server.start();
 };
 
-export const startServer = async () => {
-	const server = getServer();
-
-	await server.start();
-	console.log(`Server running on ${server.info.uri}`);
-	return server;
-};
+process.on("unhandledRejection", (err) => {
+	console.error("unhandledRejection");
+	console.error(err);
+	process.exit(1);
+});

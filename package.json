@@ -5,21 +5,20 @@
 	"main": "src/index.ts",
 	"scripts": {
 		"test": "jest e2e",
-		"build": "rimraf ./dist && tsc",
-		"start:ts": "tsc -w",
-		"start:js": "nodemon dist/index.js",
-		"start": "npm run build && node dist/index.js",
-		"dev": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./src/index.ts"
+		"start": "tsc --watch -p .",
+		"nodemon": "nodemon -e js -w lib lib/index.js"
 	},
 	"author": "El Dorado Dev Team",
 	"license": "ISC",
 	"devDependencies": {
 		"@swc/core": "^1.7.2",
 		"@swc/jest": "^0.2.36",
+		"@types/hapi__hapi": "^21.0.0",
 		"@types/jest": "^29.5.12",
+		"@types/node": "^22.5.5",
 		"jest": "^29.7.0",
 		"mocha": "^10.7.0",
-		"typescript": "^5.5.4"
+		"typescript": "^5.6.2"
 	},
 	"dependencies": {
 		"@hapi/hapi": "^21.3.10",

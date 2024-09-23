@@ -1,8 +1,3 @@
-import { startServer } from "./server";
+import { init, start } from "./server";
 
-process.on("unhandledRejection", (err) => {
-	console.error(err);
-	process.exit(1);
-});
-
-await startServer();
+init().then(() => start());
