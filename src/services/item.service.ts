@@ -14,7 +14,6 @@ export const createItemService = async (body) => {
 		const responseSave = responseSaveDto(item);
 		return responseSave;
 	} catch (error) {
-		console.log(error);
 		throw new Error(error);
 	}
 };
@@ -51,8 +50,7 @@ export const updateItemByIdService = async (id: number, body) => {
 
 export const deleteItemByIdService = async (id: number) => {
 	try {
-		const response = await deleteItemByIdRepository(id);
-		console.log(response);
+		await deleteItemByIdRepository(id);
 		const item = await getItemByIdRepository(id);
 		const responseMapper = responseGetByIdDto(item);
 		return responseMapper;

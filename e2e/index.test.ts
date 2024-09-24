@@ -78,7 +78,6 @@ describe("E2E Tests", () => {
 				method: "GET",
 				url: `/items/${response.result!.id}`
 			});
-			console.log(response2.result);
 			expect(response2.statusCode).toBe(200);
 			expect(response2.result).toEqual({
 				id: expect.any(Number),
