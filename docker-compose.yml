@@ -1,0 +1,25 @@
+services:
+  api:
+    container_name: api
+    restart: always
+    build: .
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app
+
+  db:
+    container_name: postgres
+    image: postgres
+    ports:
+      - "5433:5433"
+    volumes:
+      - data:/data/db
+    environment:
+      - POSTGRES_PASSWORD=mauricio
+      - POSTGRES_DB=web3
+
+volumes:
+  data: {}
