@@ -1,5 +1,7 @@
 export {
 	createItemHandler,
 	getAllItemsHandler,
-	getItemByIdHandler
+	getItemByIdHandler,
+	updateItemByIdHandler,
+	deleteItemByIdHandler
 } from "./item.controller";

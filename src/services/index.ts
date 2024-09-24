@@ -1,5 +1,7 @@
 export {
 	createItemService,
 	getAllItemsService,
-	getItemByIdService
+	getItemByIdService,
+	updateItemByIdService,
+	deleteItemByIdService
 } from "./item.service";

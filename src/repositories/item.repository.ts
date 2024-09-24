@@ -24,3 +24,20 @@ export const getItemByIdRepository = async (id: number) => {
 		throw new Error(error);
 	}
 };
+
+export const updateItemByIdRepository = async (id: number, body) => {
+	try {
+		const dataQuery = { where: { id } };
+		return await Item.update(body, dataQuery);
+	} catch (error) {
+		throw new Error(error);
+	}
+};
+export const deleteItemByIdRepository = async (id: number) => {
+	try {
+		const dataQuery = { where: { id } };
+		return await Item.destroy(dataQuery);
+	} catch (error) {
+		throw new Error(error);
+	}
+};

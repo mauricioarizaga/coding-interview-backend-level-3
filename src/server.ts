@@ -2,7 +2,6 @@ import Hapi from "@hapi/hapi";
 import { Server } from "@hapi/hapi";
 import { routes } from "./routes/";
 import { initDb } from "./config/db";
-import { Item } from "./entities";
 
 export let server: Server;
 
@@ -30,6 +29,7 @@ export const start = async () => {
 
 process.on("unhandledRejection", (err) => {
 	console.error("unhandledRejection");
+
 	console.error(err);
 	process.exit(1);
 });

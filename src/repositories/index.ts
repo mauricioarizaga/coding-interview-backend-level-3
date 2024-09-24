@@ -1,5 +1,7 @@
 export {
 	createItemRepository,
 	getAllItemsRepository,
-	getItemByIdRepository
+	getItemByIdRepository,
+	updateItemByIdRepository,
+	deleteItemByIdRepository
 } from "./item.repository";

@@ -1,7 +1,9 @@
 import {
 	createItemHandler,
 	getAllItemsHandler,
-	getItemByIdHandler
+	getItemByIdHandler,
+	updateItemByIdHandler,
+	deleteItemByIdHandler
 } from "../controllers/index";
 
 const apiPrefixPath = `/items`;
@@ -27,5 +29,21 @@ export const getItemById = {
 	path: `${apiPrefixPath}/{id}`,
 	options: {
 		handler: getItemByIdHandler
+	}
+};
+
+export const updateItemById = {
+	method: "PUT",
+	path: `${apiPrefixPath}/{id}`,
+	options: {
+		handler: updateItemByIdHandler
+	}
+};
+
+export const deleteItemById = {
+	method: "DELETE",
+	path: `${apiPrefixPath}/{id}`,
+	options: {
+		handler: deleteItemByIdHandler
 	}
 };
