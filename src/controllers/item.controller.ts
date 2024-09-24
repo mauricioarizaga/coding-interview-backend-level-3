@@ -6,10 +6,19 @@ import {
 	getItemByIdService,
 	updateItemByIdService
 } from "../services";
+import { validateCreateItem } from "./validation/createItem.validators";
+import { validateUpdateItem } from "./validation/updateItem.validators";
 
 export const createItemHandler = async (request: Request, h) => {
 	try {
 		const body = request.payload;
+
+		const validateReq = validateCreateItem(body);
+		if (validateReq.errors.length > 0) {
+			return h
+				.response({ errors: validateReq.errors })
+				.code(validateReq.statusCode);
+		}
 
 		const responseData = await createItemService(body);
 		return h.response(responseData).code(201);
@@ -48,6 +57,13 @@ export const updateItemByIdHandler = async (request: Request, h) => {
 	try {
 		const id = request.params.id;
 		const body = request.payload;
+
+		const validateReq = validateUpdateItem(body);
+		if (validateReq.errors.length > 0) {
+			return h
+				.response({ errors: validateReq.errors })
+				.code(validateReq.statusCode);
+		}
 
 		const responseData = await updateItemByIdService(Number(id), body);
 		return h.response(responseData).code(200);
